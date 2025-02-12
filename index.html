@@ -4,8 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduTools Educational Technology and Engineering (EdTE)</title>
+    <link rel="icon" href="" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" >
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>A Comprehensive Web-Based Educational Utility Platform</h1>
+    <!-- user with menu starts  -->
+<div class="main_menu">
+    <div class="user">
+        <img src="img/logo.jpg" alt="">
+        <h3>EduTools</h3>
+        <p>Educational Technology and Engineering</p>
+    </div>
+
+    <ul class="navbar">
+        <li><a href=""><i class="fas fa-home"></i> home</a></li>
+        <li><a href="#services"><i class="fas fa-tools"></i> services</a></li>
+        <li><a href="#contact"><i class="fa fa-envelope"></i> contact</a></li>
+    </ul>
+</div>
+
+<!-- user with menu ends -->
+<div id="menu-btn" class="fas fa-bars"></div>
+<!-- theme toggler  -->
+<div id="theme-toggler" class="fas fa-moon"></div>
+
+<!-- Project section starts  -->
+<section class="services" id="services">   
+    <h1 class="head_title"> Our<span> Apps</span> </h1>
+    <div class="application_container">
+        <div class="application_item">
+            <img src="img/stopWatch.jpg" alt="">
+            <div class="content">
+                <h3>stopWatch 1.0</h3>
+                <a class="application_link" href="">View Application</a>
+            </div>
+        </div>         
+     </div>
+
+</section>
+
+<!-- info email address a mail send hobe -->
+<section class="contact" id="contact">
+    <h1 class="head_title"> <span>contact</span> Us </h1>
+    <form action="" method="POST" id="my-form">
+        <input type="text" id="Name" name="Name" placeholder="Enter your name" class="box">
+        <input type="email" id="email" name="email" placeholder="Enter your email address" class="box">
+        <input type="text" placeholder="Enter the subject" class="box">
+        <textarea name="massage" id="massage" class="box" placeholder="Your message" id="" cols="30" rows="10"></textarea>
+        <input type="submit" value="send message" class="btn">
+    </form>
+	<div id="status"></div>
+</section>
+
+<!-- footer section ends -->
+<div class="footer"> created by <a href="https://facebook.com/EdTect.Engg">Rony Ahmmed</a> | all rights reserved </div>
+
+<script src="javascript.js"></script>
+
 </body>
 </html>
