@@ -208,6 +208,7 @@ section{
     box-shadow: var(--box-shadow);
     position: relative;
     border:1rem solid transparent;
+    display: inline-block;
 }
 
 .services .application_container .application_item img{
@@ -250,6 +251,13 @@ section{
     padding: 5px;
     background-color: #ddd;
     color: red;
+}
+
+.services .application_container .application_item:hover .application_link:hover{
+    font-size: 25px;
+    padding: 5px;
+    background-color: #fa0a0a;
+    color: rgb(255, 245, 245);
 }
 
 .contact form{

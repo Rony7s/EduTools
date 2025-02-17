@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator || EduTools Educational Technology and Engineering (EdTE)</title>
+    <link rel="icon" href="" type="image/gif" sizes="16x16">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #cd7676;
+        }
+
+        .container {
+            width: 400px;
+            text-align: center;
+            background-color: #f0d994;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        #qr-code {
+            margin: 40px;
+             
+        }
+        .container h1{
+            color: red;
+        }
+
+        #text-input {
+            width: 95%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html">Back to Home</a>
+        <h1>QR Code Generator</h1>
+        <div id="qr-code"></div>
+        <input type="text" id="text-input" placeholder="Enter text to generate QR code">
+        <h2>EdTech_Engg</h2>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        document.getElementById('text-input').addEventListener('input', function() {
+            const inputText = this.value;
+            const qrCodeElement = document.getElementById('qr-code');
+
+            // Clear previous QR code
+            qrCodeElement.innerHTML = '';
+
+            // Generate new QR code
+            if (inputText) {
+                new QRCode(qrCodeElement, {
+                    text: inputText,
+                    width: 310,
+                    height: 310
+                });
+            }
+        });
+    </script>
+</body>
+</html>
