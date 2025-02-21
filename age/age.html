@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <a href="../index.html">Back to Home</a>
+        <h1>Age Calculator</h1>
+        <div class="input-group">
+            <label for="birthdate">Enter your birthdate:</label>
+            <input type="date" id="birthdate" name="birthdate">
+        </div>
+        <div class="input-group">
+            <label for="target-date">Target date (default is today):</label>
+            <input type="date" id="target-date" name="target-date">
+        </div>
+        <button id="calculate-btn">Calculate Age</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        // Set default target date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('target-date').value = today;
+
+        document.getElementById('calculate-btn').addEventListener('click', function () {
+            const birthdate = document.getElementById('birthdate').value;
+            const targetDate = document.getElementById('target-date').value;
+
+            if (!birthdate || !targetDate) {
+                alert('Please enter both birthdate and target date.');
+                return;
+            }
+
+            const birthDate = new Date(birthdate);
+            const target = new Date(targetDate);
+
+            if (target < birthDate) {
+                alert('Target date cannot be before birthdate.');
+                return;
+            }
+
+            let ageInYears = target.getFullYear() - birthDate.getFullYear();
+            let ageInMonths = target.getMonth() - birthDate.getMonth();
+            let ageInDays = target.getDate() - birthDate.getDate();
+
+            // Adjust for negative months or days
+            if (ageInMonths < 0 || (ageInMonths === 0 && ageInDays < 0)) {
+                ageInYears--;
+                ageInMonths += 12;
+            }
+
+            if (ageInDays < 0) {
+                const lastMonth = new Date(target.getFullYear(), target.getMonth() - 1, birthDate.getDate());
+                ageInDays = Math.floor((target - lastMonth) / (1000 * 60 * 60 * 24));
+                ageInMonths--;
+            }
+
+            const result = `As of ${targetDate}, you are ${ageInYears} years, ${ageInMonths} months, and ${ageInDays} days old.`;
+            document.getElementById('result').textContent = result;
+        });
+    </script>
+</body>
+
+</html>
