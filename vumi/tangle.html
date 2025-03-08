@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>জমি পরিমাপ (ত্রিভুজ)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top-Left Links -->
+    <div class="top-left-links">
+        <a href="index.html" class="link">Home</a>
+        <a href="units.html" class="link">units</a>
+    </div>
+    <div class="container">
+        <h1>জমি পরিমাপ (ত্রিভুজ)</h1>
+        <div id="result"></div>
+        <div id="error-message" class="error"></div>
+        <div class="input-group">
+            <label for="a">প্রথম বাহুর দৈর্ঘ্য (ফুট):</label>
+            <input type="number" id="a" placeholder="প্রথম বাহুর দৈর্ঘ্য (ফুট) দিন" min="0">
+        </div>
+        <div class="input-group">
+            <label for="b">দ্বিতীয় বাহুর দৈর্ঘ্য (ফুট):</label>
+            <input type="number" id="b" placeholder="দ্বিতীয় বাহুর দৈর্ঘ্য (ফুট) দিন" min="0">
+        </div>
+        <div class="input-group">
+            <label for="c">তৃতীয় বাহুর দৈর্ঘ্য (ফুট):</label>
+            <input type="number" id="c" placeholder="তৃতীয় বাহুর দৈর্ঘ্য (ফুট) দিন" min="0">
+        </div>
+
+        <h5>Rony Ahmmed EdTE-BDU</h5>
+    </div>
+
+    <script>
+        function calculate() {
+            const a = parseFloat(document.getElementById('a').value) || 0;
+            const b = parseFloat(document.getElementById('b').value) || 0;
+            const c = parseFloat(document.getElementById('c').value) || 0;
+
+            const errorMessage = document.getElementById('error-message');
+            const result = document.getElementById('result');
+
+            if (a <= 0 || b <= 0 || c <= 0) {
+                errorMessage.innerText = "সমস্ত মান ০ এর চেয়ে বড় হতে হবে।";
+                result.innerText = "";
+                return;
+            } else {
+                errorMessage.innerText = "";
+            }
+
+            let s = (a + b + c) / 2;
+            let area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+
+            if (isNaN(area)) {
+                errorMessage.innerText = "ভুল ইনপুট, অনুগ্রহ করে সঠিক মান দিন।";
+                result.innerText = "";
+                return;
+            }
+
+            const sotangso = area / 435.6; // ১ শতক = ৪৩৫.৬ বর্গফুট
+            const katha = area / 718.74; // ১ কাঠা = ১.৬৫ শতক
+
+            result.innerHTML = `
+                <strong>মোট এলাকা:</strong> ${area.toFixed(4)} বর্গফুট<br>
+                <strong>শতাংশ:</strong> ${sotangso.toFixed(4)} শতক<br>
+                <strong>কাঠা:</strong> ${katha.toFixed(4)} কাঠা
+            `;
+        }
+
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', calculate);
+        });
+    </script>
+</body>
+
+</html>

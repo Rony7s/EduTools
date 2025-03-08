@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>জমি পরিমাপ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top-Left Links -->
+    <div class="top-left-links">
+        <a href="index.html" class="link">Home</a>
+        <a href="units.html" class="link">units</a>
+    </div>
+    <div class="container">
+        <h1>জমি পরিমাপ (আয়তক্ষেত্র)</h1>
+
+        <div id="result"></div>
+        <div id="error-message" class="error"></div>
+        <div class="input-group">
+            <label for="a">পূর্ব দিকে দৈর্ঘ্য (ফুট):</label>
+            <input type="number" id="a" placeholder="পূর্ব দিকে দৈর্ঘ্য (ফুট):" min="0">
+        </div>
+        <div class="input-group">
+            <label for="b">পশ্চিম দিকে দৈর্ঘ্য (ফুট):</label>
+            <input type="number" id="b" placeholder="পশ্চিম দিকে দৈর্ঘ্য (ফুট):" min="0">
+        </div>
+        <div class="input-group">
+            <label for="c">উত্তর দিকে দৈর্ঘ্য (ফুট):</label>
+            <input type="number" id="c" placeholder="উত্তর দিকে দৈর্ঘ্য (ফুট):" min="0">
+        </div>
+        <div class="input-group">
+            <label for="d">দক্ষিণ দিকে দৈর্ঘ্য (ফুট):</label>
+            <input type="number" id="d" placeholder="দক্ষিণ দিকে দৈর্ঘ্য দিন" min="0">
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            const a = parseFloat(document.getElementById('a').value) || 0;
+            const b = parseFloat(document.getElementById('b').value) || 0;
+            const c = parseFloat(document.getElementById('c').value) || 0;
+            const d = parseFloat(document.getElementById('d').value) || 0;
+
+            if (a <= 0 || b <= 0 || c <= 0 || d <= 0) {
+                document.getElementById('error-message').innerText = "সমস্ত মান ০ এর চেয়ে বড় হতে হবে।";
+                document.getElementById('result').innerText = "";
+                return;
+            } else {
+                document.getElementById('error-message').innerText = "";
+            }
+
+            let x = (a + c) / 2;
+            let y = (b + d) / 2;
+            let area = x * y;
+
+            // জমির পরিমাপ (আয়তক্ষেত্রর ক্ষেত্রফল সূত্র)
+            const sotangso = area / 435.6; // ১ শতক = ৪৩৫.৬ বর্গফুট
+            const katha = area / 718.74; // ১ কাঠা = ১.৬৫ শতক
+
+            document.getElementById('result').innerHTML = `
+                <strong>মোট এলাকা:</strong> ${area.toFixed(4)} বর্গফুট<br>
+                <strong>শতাংশ:</strong> ${sotangso.toFixed(4)} শতক<br>
+                <strong>কাঠা:</strong> ${katha.toFixed(4)} কাঠা
+            `;
+        }
+
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', calculate);
+        });
+    </script>
+</body>
+
+</html>
