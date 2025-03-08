@@ -11,6 +11,7 @@
     <div class="top-left-links">
         <a href="index.html" class="link">Home</a>
         <a href="units.html" class="link">units</a>
+        <div class="link" id="help">Help</div>
     </div>
     <div class="container">
         <h1>জমি পরিমাপ (আয়তক্ষেত্র)</h1>
@@ -34,7 +35,10 @@
             <input type="number" id="d" placeholder="দক্ষিণ দিকে দৈর্ঘ্য দিন" min="0">
         </div>
     </div>
-
+    <div id="popup">
+        <span class="close">&times;</span>
+        <img src="../img/reactangle_help_EdTech_Engg.jpg" alt="Popup Image">
+    </div>
     <script>
         function calculate() {
             const a = parseFloat(document.getElementById('a').value) || 0;
@@ -69,6 +73,7 @@
             input.addEventListener('input', calculate);
         });
     </script>
+    <script src="popup.js"></script>
 </body>
 
 </html>

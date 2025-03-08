@@ -11,6 +11,8 @@
     <div class="top-left-links">
         <a href="index.html" class="link">Home</a>
         <a href="units.html" class="link">units</a>
+        <div class="link" id="help">Help</div>
+
     </div>
     <div class="container">
         <h1>জমি পরিমাপ (চতুভুজ)</h1>
@@ -25,8 +27,8 @@
             <input type="number" id="b" placeholder="দ্বিতীয় বাহুর দৈর্ঘ্য (ফুট) দিন" min="0">
         </div>
         <div class="input-group">
-            <label for="c">প্রস্থ (ফুট):</label>
-            <input type="number" id="c" placeholder="প্রস্থ দিন" min="0">
+            <label for="c">কর্ণ দৈর্ঘ্য (ফুট):</label>
+            <input type="number" id="c" placeholder="কর্ণ দৈর্ঘ্য দিন" min="0">
         </div>
         <div class="input-group">
             <label for="d">তৃতীয় বাহুর দৈর্ঘ্য (ফুট):</label>
@@ -38,7 +40,10 @@
         </div>
         <br>
     </div>
-
+    <div id="popup">
+        <span class="close">&times;</span>
+        <img src="../img/quad_help_EdTech_Engg.jpg" alt="Popup Image">
+    </div>
     <script>
         function calculate() {
             const a = parseFloat(document.getElementById('a').value) || 0;
@@ -78,6 +83,6 @@
             input.addEventListener('input', calculate);
         });
     </script>
+    <script src="popup.js"></script>
 </body>
-
 </html>

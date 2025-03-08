@@ -10,7 +10,44 @@ body {
     color: #fff;
     overflow: hidden;
 }
+/* Style for the popup */
+#popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+    z-index: 1000; /* Sit on top */
+}
 
+/* Style for the image inside the popup */
+#popup img {
+    display: block;
+    margin: 10% auto; /* Centered */
+    max-width: 80%;
+    max-height: 80%;
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
 .container {
     text-align: center;
     max-width: 600px;
@@ -205,3 +242,5 @@ input:focus {
         border-radius: 10px;
     }
 }
+
+
